@@ -10,6 +10,6 @@ Sviluppato in Python con database SQLite.
 ## Istruzioni per eseguire il programma
 1. Aprire il terminale (o prompt dei comandi).
 2. Spostarsi nella cartella del progetto:
-   `cd PersonalBudgetSystem`
+   `cd PersonalExpenseSystem`
 3. Eseguire il comando di avvio:
    `python src/main.py`
