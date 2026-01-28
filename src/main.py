@@ -257,4 +257,4 @@ while True:
         print("Ciao!")
         break
     else:
-        print("Numero non valido, riprova.")
+        print("Scelta non valida. Riprovare.")
