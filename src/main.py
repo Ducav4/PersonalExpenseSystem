@@ -1,5 +1,4 @@
 import sqlite3
-import sys
 
 # Nome del file database
 NOME_DB = "spese.db"
@@ -103,7 +102,7 @@ def agg_spesa():
     if ris == None:
         print("Errore: Categoria non trovata. Creala prima nel menu 1.")
     else:
-        id_c = ris[0] # Prendo il primo elemento della tupla (l'ID)
+        id_c = ris[0] # Prendo il primo elemento della lista (l'ID)
         
         # Inserisco la spesa
         puntatore.execute("INSERT INTO Spese (data_spesa, importo, descrizione, id_categoria) VALUES (?, ?, ?, ?)", (data, valore, desc, id_c))
@@ -207,7 +206,6 @@ def mostra_report():
                 if somma == None:
                     somma = 0.0
                 
-                # Logica IF/ELSE richiesta dal progetto
                 stato = "OK"
                 if somma > limite:
                     stato = "SUPERAMENTO BUDGET!!"
