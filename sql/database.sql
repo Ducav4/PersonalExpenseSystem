@@ -29,13 +29,30 @@ CREATE TABLE IF NOT EXISTS Budget (
     FOREIGN KEY (id_categoria) REFERENCES Categorie(id_categoria)
 );
 
--- Dati iniziali di prova
+-- Dati iniziali di prova (Popolamento)
+
+-- 1. Inserimento Categorie
 INSERT INTO Categorie (nome_categoria) VALUES ('Alimentari');
 INSERT INTO Categorie (nome_categoria) VALUES ('Trasporti');
 INSERT INTO Categorie (nome_categoria) VALUES ('Svago');
 
+-- 2. Inserimento Budget
+-- Budget di 300 euro per Alimentari a Febbraio 2026
+INSERT INTO Budget (mese_anno, importo_budget, id_categoria)
+VALUES ('2026-02', 300.00, 1);
+
+-- Budget basso per Svago (per testare il superamento)
+INSERT INTO Budget (mese_anno, importo_budget, id_categoria)
+VALUES ('2026-02', 50.00, 3);
+
+-- 3. Inserimento Spese
+-- Due spese per Alimentari (dimostra che il Report 1 fa la somma)
 INSERT INTO Spese (data_spesa, importo, descrizione, id_categoria) 
 VALUES ('2026-02-10', 45.50, 'Spesa Supermercato', 1);
 
-INSERT INTO Budget (mese_anno, importo_budget, id_categoria)
-VALUES ('2026-02', 300.00, 1);
+INSERT INTO Spese (data_spesa, importo, descrizione, id_categoria) 
+VALUES ('2026-02-12', 20.00, 'Macellaio', 1);
+
+-- Una spesa per Svago che supera il budget (55 > 50)
+INSERT INTO Spese (data_spesa, importo, descrizione, id_categoria) 
+VALUES ('2026-02-14', 55.00, 'Cinema e Pizza', 3);
